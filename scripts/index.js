@@ -9,7 +9,7 @@ const bleStateContainer = document.getElementById("bleState");
 const timestampContainer = document.getElementById("timestamp");
 
 //Define BLE Device Specs
-var deviceName = "RemoteAlarm";
+var deviceName = "ESP32";
 var bleService = "19b10000-e8f2-537e-4f6c-d104768a1214";
 var ledCharacteristic = "19b10002-e8f2-537e-4f6c-d104768a1214";
 var sensorCharacteristic = "19b10001-e8f2-537e-4f6c-d104768a1214";
