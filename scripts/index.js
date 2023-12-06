@@ -8,6 +8,9 @@ const latestValueSent = document.getElementById("valueSent");
 const bleStateContainer = document.getElementById("bleState");
 const timestampContainer = document.getElementById("timestamp");
 
+const connectButtonContainer = document.getElementById("connectBtnContainer");
+const controlPanelContainer = document.getElementById("controlPanelContainer");
+
 //Define BLE Device Specs
 var deviceName = "ESP32";
 var bleService = "19b10000-e8f2-537e-4f6c-d104768a1214";
@@ -24,6 +27,22 @@ var sensorCharacteristic = "19b10001-e8f2-537e-4f6c-d104768a1214";
 var bleServer;
 var bleServiceFound;
 var sensorCharacteristicFound;
+
+const openControlPanel = () => {
+  console.log("Open Control Panel");
+  connectButtonContainer.classList.add("d-none");
+  connectButtonContainer.classList.remove("d-flex");
+  controlPanelContainer.classList.add("d-flex");
+  controlPanelContainer.classList.remove("d-none");
+};
+
+const closeControlPanel = () => {
+  console.log("Close Control Panel");
+  connectButtonContainer.classList.add("d-flex");
+  connectButtonContainer.classList.remove("d-none");
+  controlPanelContainer.classList.add("d-none");
+  controlPanelContainer.classList.remove("d-flex");
+};
 
 // Connect Button (search for BLE Devices only if BLE is available)
 connectButton.addEventListener("click", (event) => {
@@ -92,6 +111,7 @@ function connectToDevice() {
       const decodedValue = new TextDecoder().decode(value);
       console.log("Decoded value: ", decodedValue);
       retrievedValue.innerHTML = decodedValue;
+      openControlPanel();
     })
     .catch((error) => {
       console.log("Error: ", error);
@@ -153,6 +173,7 @@ function disconnectDevice() {
           console.log("Device Disconnected");
           bleStateContainer.innerHTML = "Device Disconnected";
           bleStateContainer.style.color = "#d13a30";
+          closeControlPanel();
         })
         .catch((error) => {
           console.log("An error occurred:", error);
