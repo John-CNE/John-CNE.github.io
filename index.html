@@ -1,7 +1,8 @@
 <!--
     App Requirements:
-        - [ ] Branding Block. 
-        - [ ] Connect Button / Disconnect button.
+        - [x] Branding Block. 
+        - [x] Connect Button / Disconnect button.
+
         - [ ] Arm / Disarm button ( Once Connected )
         - [ ] Battery Level Indicator ( Once Connected ) 
         - [ ] Alarm State ( Once Connected )
@@ -21,6 +22,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="styles/spinner.css" />
     <link rel="stylesheet" href="styles/global.css" />
   </head>
   <body>
@@ -37,7 +39,7 @@
       <h2>ESP32 Web BLE Application</h2>
       <!-- Connect Button Container -->
       <div
-        class="d-flex justify-content-center align-items-center container"
+        class="d-none justify-content-center align-items-center container"
         id="connectBtnContainer"
       >
         <button type="button" class="btn btn-primary" id="connectBleButton">
@@ -45,7 +47,7 @@
         </button>
       </div>
       <!-- Control Pannel -->
-      <div class="d-none flex-column" id="controlPanelContainer">
+      <div class="d-flex flex-column" id="controlPanelContainer">
         <button type="button" class="btn btn-danger" id="disconnectBleButton">
           Disconnect BLE Device
         </button>
